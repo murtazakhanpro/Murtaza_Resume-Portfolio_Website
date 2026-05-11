@@ -12,6 +12,11 @@ Murtaza Ali<br>Aspiring AI Engineer<br>Aspiring AI & Data Science Engineer
 ![](https://streak-stats.demolab.com/?user=murtazakhanpro&theme=dark&hide_border=false)<br/>
 ![](https://github-readme-stats.shion.dev/api/top-langs/?username=murtazakhanpro&theme=dark&hide_border=false&include_all_commits=false&count_private=false&layout=compact)
 
+### 🎓 Education & Certifications
+*   **AI & Data Science Certification** | Saylani Mass IT Training (SMIT) — *In Progress*
+*   **Bachelor of Science in Computer Science** | *2026 — 2030*
+*   **Intermediate** | Board of Intermediate Education Karachi (BIEK)
+
 ### 🔝 Top Contributed Repo
 ![](https://github-contributor-stats.vercel.app/api?username=murtazakhanpro&limit=5&theme=default_repocard&combine_all_yearly_contributions=true)
 
