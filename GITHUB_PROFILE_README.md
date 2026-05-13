@@ -1,5 +1,5 @@
 # 💫 About Me:
-Hi, I’m **Murtaza**, an aspiring AI and Data Science developer from Karachi, Pakistan. I focus on building intelligent systems and solving problems through data.
+Hi, I’m **Murtaza Ali**<br>Aspiring AI and Data Science Engineer from Karachi, Pakistan. I focus on building intelligent systems and solving problems through data.
 
 🔭 **I’m currently working on**: Enhancing my Machine Learning model deployments.
 🌱 **I’m currently learning**: Deep Learning and Advanced Statistical Analysis.

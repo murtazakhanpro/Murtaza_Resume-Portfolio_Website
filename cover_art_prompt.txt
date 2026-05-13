@@ -1,0 +1,33 @@
+### Cover Art Generation Prompt
+
+**Title:** Professional Developer Portfolio Cover / Banner
+**Target Platform:** LinkedIn Header, GitHub Profile, or Portfolio Hero Section
+
+---
+
+**Prompt:**
+"A sophisticated and ultra-modern digital banner designed for an Aspiring AI and Data Science Engineer. 
+
+**Central Focus:** 
+The name 'MURTAZA ALI' in a bold, elegant, minimalist sans-serif font, glowing softly in the center.
+
+**Visual Elements & Icons:**
+Integrate high-quality, glowing 3D-style icons of the following tech stack:
+- **Core Languages:** Python (snake logo), JavaScript (JS logo), HTML5.
+- **Tools & Environments:** A sleek VS Code editor window showing clean Python code, a Jupyter Notebook interface with data visualizations, and the Anaconda circular logo.
+- **Workflow:** The Git branch icon and the GitHub Octocat logo integrated subtly into the background.
+- **Operating Systems:** Subtle glowing logos of the Linux Penguin (Ubuntu), Windows 11, and the Apple logo representing cross-platform expertise.
+
+**Atmosphere:**
+The background should be a deep, dark obsidian or midnight blue with abstract neural network lines (representing AI) and digital circuit patterns. Use a 'Glassmorphism' aesthetic for the UI elements.
+
+**Color Palette:**
+Professional deep blacks, vibrant electric blues, and subtle gold accents (matching the Anaconda/Python colors).
+
+**Technical Style:**
+Cinematic lighting, 8k resolution, photorealistic textures, clean composition, high-end digital art style similar to modern SaaS landing pages (like Stripe or Linear)."
+
+---
+
+**Usage Note:**
+You can use this prompt with AI image generators like Midjourney, DALL-E 3, or Adobe Firefly to create a stunning professional cover for your technical profiles.
