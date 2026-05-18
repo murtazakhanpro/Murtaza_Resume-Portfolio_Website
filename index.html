@@ -40,12 +40,29 @@
         }
     </script>
     <style>
+        /* Custom scrollbar for modern browsers */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #000000;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2c2c2e;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3a3a3c;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            overflow-x: hidden;
         }
 
         .glass-nav {
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0, 0.75);
             backdrop-filter: saturate(180%) blur(20px);
             -webkit-backdrop-filter: saturate(180%) blur(20px);
         }
@@ -53,11 +70,23 @@
         .bento-card {
             background-color: #1d1d1f;
             border-radius: 22px;
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .bento-card:hover {
-            transform: scale(1.02);
+            transform: translateY(-4px);
+            border-color: rgba(41, 151, 255, 0.3);
+            box-shadow: 0 12px 30px -10px rgba(41, 151, 255, 0.2);
+        }
+
+        /* Prevent horizontal overflow scrolling bar */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
     </style>
 </head>
@@ -66,15 +95,37 @@
 
     <!-- Navigation -->
     <nav class="fixed top-0 w-full z-50 glass-nav border-b border-white/10">
-        <div class="max-w-7xl mx-auto px-6 h-12 flex items-center justify-between text-xs font-semibold tracking-wide">
-            <a href="#" class="text-white hover:text-white/80 transition-colors">Murtaza Ali Khan</a>
-            <div class="flex gap-6 sm:gap-8 overflow-x-auto whitespace-nowrap scrollbar-hide">
-                <a href="#work" class="text-white/80 hover:text-white transition-colors">Work</a>
-                <a href="#skills" class="text-white/80 hover:text-white transition-colors">Skills</a>
-                <a href="#activity" class="text-white/80 hover:text-white transition-colors">Activity</a>
-                <a href="#about" class="text-white/80 hover:text-white transition-colors">About</a>
-                <a href="#contact" class="text-white/80 hover:text-white transition-colors">Contact</a>
+        <div class="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between text-xs sm:text-sm font-semibold tracking-wide">
+            <a href="#" class="text-white hover:text-accent transition-colors flex items-center gap-2 select-none">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
+                </span>
+                Murtaza Ali Khan
+            </a>
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#work" class="text-white/80 hover:text-white hover:scale-105 transition-all duration-300">Work</a>
+                <a href="#skills" class="text-white/80 hover:text-white hover:scale-105 transition-all duration-300">Skills</a>
+                <a href="#activity" class="text-white/80 hover:text-white hover:scale-105 transition-all duration-300">Activity</a>
+                <a href="#about" class="text-white/80 hover:text-white hover:scale-105 transition-all duration-300">About</a>
+                <a href="#contact" class="px-4 py-1.5 rounded-full bg-white text-black hover:bg-accent hover:text-white hover:scale-105 transition-all duration-300 shadow-md">Contact</a>
             </div>
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="md:hidden flex items-center justify-center p-2 text-white/80 hover:text-white focus:outline-none transition-colors" aria-label="Toggle Menu">
+                <svg id="menu-icon" class="w-6 h-6 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+        
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-14 left-0 w-full glass-nav border-b border-white/10 flex flex-col items-center py-6 gap-6 text-sm font-semibold tracking-wide transition-all duration-300 transform opacity-0 -translate-y-4">
+            <a href="#work" class="mobile-nav-link text-white/80 hover:text-white transition-colors">Work</a>
+            <a href="#skills" class="mobile-nav-link text-white/80 hover:text-white transition-colors">Skills</a>
+            <a href="#activity" class="mobile-nav-link text-white/80 hover:text-white transition-colors">Activity</a>
+            <a href="#about" class="mobile-nav-link text-white/80 hover:text-white transition-colors">About</a>
+            <a href="#contact" class="mobile-nav-link px-6 py-2 rounded-full bg-white text-black hover:bg-accent hover:text-white transition-all duration-300">Contact</a>
         </div>
     </nav>
 
@@ -82,65 +133,115 @@
     <main class="flex-grow pt-32 pb-24 px-6">
         <section class="max-w-4xl mx-auto text-center mb-40 mt-12 md:mt-20">
             <div class="mb-10 flex justify-center">
-                <img src="images/profile.png" alt="Murtaza Ali Khan"
-                    class="w-32 h-32 md:w-40 md:h-40 rounded-full border border-white/10 object-cover shadow-2xl shadow-white/5 bg-surface">
+                <div class="relative group">
+                    <!-- Glow effect in background -->
+                    <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-accent to-[#7b2cbf] blur-2xl opacity-30 group-hover:opacity-60 transition-all duration-500 scale-95 group-hover:scale-105"></div>
+                    <!-- Outer border with scaling transition -->
+                    <div class="relative w-36 h-36 md:w-44 md:h-44 rounded-full p-[3px] bg-gradient-to-tr from-white/20 via-white/5 to-white/20 group-hover:from-accent group-hover:to-[#7b2cbf] transition-all duration-500 shadow-2xl shadow-black/50">
+                        <div class="w-full h-full rounded-full overflow-hidden bg-surface">
+                            <img src="images/profile.png" alt="Murtaza Ali Khan"
+                                class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
+                        </div>
+                    </div>
+                </div>
             </div>
-            <h1 class="text-5xl md:text-7xl lg:text-[96px] font-bold tracking-tighter leading-[1.05] mb-6">
+            <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-[96px] font-bold tracking-tighter leading-[1.05] mb-6 select-none">
                 Engineer.<br>Problem Solver.<br>Innovator.
             </h1>
-            <p class="text-xl md:text-3xl font-medium text-muted tracking-tight mb-10 max-w-2xl mx-auto">
+            <p class="text-lg sm:text-xl md:text-3xl font-medium text-muted tracking-tight mb-10 max-w-2xl mx-auto px-4">
                 Building intelligent, data-driven systems and scalable proptech solutions.
             </p>
-            <div class="flex items-center justify-center gap-8 text-xl font-medium">
-                <a href="#work" class="text-accent hover:underline decoration-2 underline-offset-4">View projects
-                    &gt;</a>
-                <a href="#contact" class="text-accent hover:underline decoration-2 underline-offset-4">Get in touch
-                    &gt;</a>
+            <div class="flex flex-row items-center justify-center gap-6 sm:gap-8 text-lg md:text-xl font-medium">
+                <a href="#work" class="text-accent hover:underline hover:text-white transition-all duration-300 decoration-2 underline-offset-4">View projects &gt;</a>
+                <a href="#contact" class="text-accent hover:underline hover:text-white transition-all duration-300 decoration-2 underline-offset-4">Get in touch &gt;</a>
             </div>
         </section>
 
         <!-- Work Section -->
-        <section id="work" class="max-w-7xl mx-auto mb-40 scroll-mt-24">
-            <h2 class="text-4xl md:text-6xl font-bold tracking-tighter mb-12 text-center">Selected Work.</h2>
+        <section id="work" class="max-w-7xl mx-auto mb-24 md:mb-40 scroll-mt-24 px-4 sm:px-6">
+            <h2 class="text-4xl md:text-6xl font-bold tracking-tighter mb-4 text-center select-none">Selected Work.</h2>
+            <p class="text-muted text-center text-base md:text-lg mb-12 max-w-lg mx-auto font-medium">Demonstrating technical proficiency through real-world, high-performance Python architectures.</p>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- JS Properties -->
-                <div class="bento-card p-10 md:p-14 flex flex-col justify-between min-h-[350px]">
-                    <div>
-                        <h3 class="text-3xl font-bold tracking-tight mb-4">JS Property & Construction</h3>
-                        <p class="text-muted text-lg font-medium max-w-md">A high-end corporate website for a premier
-                            real estate and construction firm.</p>
+                <!-- Lyntica Property Management System -->
+                <div class="bento-card p-8 md:p-12 flex flex-col justify-between min-h-[400px] md:col-span-2 bg-gradient-to-br from-[#1d1d1f] via-[#151516] to-[#0c0c0d]">
+                    <div class="md:max-w-3xl">
+                        <div class="flex items-center gap-3 mb-6 flex-wrap">
+                            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-accent/10 text-accent border border-accent/20">Flagship Project</span>
+                            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-white/5 text-white/70">Python • Relational SQL • OOP</span>
+                        </div>
+                        <h3 class="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-white hover:text-accent transition-colors duration-300">Lyntica Property Management System</h3>
+                        <p class="text-muted text-base md:text-lg font-medium mb-6 leading-relaxed">
+                            A highly robust enterprise property management solution engineered with customized data schemas and secure, structured database layers. Streamlines critical landlord-tenant transaction pipelines, leasing structures, and automated utility scheduling through deep system modeling.
+                        </p>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 border-t border-white/5 pt-6 mt-6">
+                            <div>
+                                <h4 class="text-xs text-white/40 uppercase font-semibold tracking-wider">Persistence Layer</h4>
+                                <p class="text-white/90 text-sm font-medium mt-1">SQLite / Custom ORM</p>
+                            </div>
+                            <div>
+                                <h4 class="text-xs text-white/40 uppercase font-semibold tracking-wider">Architecture Pattern</h4>
+                                <p class="text-white/90 text-sm font-medium mt-1">MVC / Object-Oriented</p>
+                            </div>
+                            <div class="col-span-2 sm:col-span-1">
+                                <h4 class="text-xs text-white/40 uppercase font-semibold tracking-wider">Core Operations</h4>
+                                <p class="text-white/90 text-sm font-medium mt-1">Multi-threaded Pipelines</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="mt-12">
-                        <a href="https://murtazakhanpro.github.io/jsproperties/" target="_blank"
-                            class="text-accent text-lg font-medium hover:underline decoration-2 underline-offset-4">Visit
-                            live site ↗</a>
-                    </div>
-                </div>
-                <!-- Inam Enterprises -->
-                <div class="bento-card p-10 md:p-14 flex flex-col justify-between min-h-[350px]">
-                    <div>
-                        <h3 class="text-3xl font-bold tracking-tight mb-4">Inam Enterprises</h3>
-                        <p class="text-muted text-lg font-medium max-w-md">A professional, high-performance business
-                            website with seamless UX and responsive design.</p>
-                    </div>
-                    <div class="mt-12">
-                        <a href="https://www.inamenterprises.com" target="_blank"
-                            class="text-accent text-lg font-medium hover:underline decoration-2 underline-offset-4">Visit
-                            live site ↗</a>
-                    </div>
-                </div>
-                <!-- Lyntica Property Management -->
-                <div
-                    class="bento-card p-10 md:p-14 flex flex-col justify-between min-h-[350px] md:col-span-2 bg-gradient-to-br from-[#1d1d1f] to-[#121213]">
-                    <div class="md:max-w-2xl">
-                        <h3 class="text-3xl font-bold tracking-tight mb-4">Lyntica Property Management System</h3>
-                        <p class="text-muted text-lg font-medium">A robust property management solution engineered with
-                            advanced data handling and intelligent system architecture.</p>
-                    </div>
-                    <div class="mt-12">
+                    <div class="mt-8 flex flex-wrap gap-4">
                         <a href="https://github.com/murtazakhanpro/lyntica_property_management_system" target="_blank"
-                            class="text-accent text-lg font-medium hover:underline decoration-2 underline-offset-4">View
-                            source code ↗</a>
+                            class="inline-flex items-center gap-2 text-accent text-base font-semibold hover:underline decoration-2 underline-offset-4">
+                            View source code
+                            <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Mini Banking System -->
+                <div class="bento-card p-8 md:p-10 flex flex-col justify-between min-h-[380px] bg-gradient-to-br from-[#1d1d1f] to-[#141415]">
+                    <div>
+                        <div class="flex items-center gap-3 mb-6 flex-wrap">
+                            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-green-500/10 text-green-400 border border-green-500/20">Security & Logic</span>
+                            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-white/5 text-white/70">Python • Cryptography</span>
+                        </div>
+                        <h3 class="text-2xl md:text-3xl font-bold tracking-tight mb-4 text-white hover:text-accent transition-colors duration-300">Mini Banking System</h3>
+                        <p class="text-muted text-sm md:text-base font-medium leading-relaxed">
+                            A secure, transaction-safe banking simulator executing double-entry ledger principles. Includes secure cryptographic authentication, rigorous transaction integrity checks, automated compound interest calculations, and concurrent ledger protection.
+                        </p>
+                    </div>
+                    <div class="mt-8">
+                        <a href="https://github.com/murtazakhanpro/mini_banking_system" target="_blank"
+                            class="inline-flex items-center gap-2 text-accent text-base font-semibold hover:underline decoration-2 underline-offset-4">
+                            View repository
+                            <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Data Scraping & ETL Pipeline -->
+                <div class="bento-card p-8 md:p-10 flex flex-col justify-between min-h-[380px] bg-gradient-to-br from-[#1d1d1f] to-[#141415]">
+                    <div>
+                        <div class="flex items-center gap-3 mb-6 flex-wrap">
+                            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20">Data Engineering</span>
+                            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-white/5 text-white/70">BeautifulSoup • Pandas • ETL</span>
+                        </div>
+                        <h3 class="text-2xl md:text-3xl font-bold tracking-tight mb-4 text-white hover:text-accent transition-colors duration-300">Data Scraping & ETL</h3>
+                        <p class="text-muted text-sm md:text-base font-medium leading-relaxed">
+                            An intelligent data extraction engine designed to harvest and clean web datasets. Implements advanced rate-limiting, custom header-rotation, dynamic JavaScript execution, and sanitizes unstructured datasets into tidy Pandas DataFrames for immediate analysis.
+                        </p>
+                    </div>
+                    <div class="mt-8">
+                        <a href="https://github.com/murtazakhanpro/data-scraping" target="_blank"
+                            class="inline-flex items-center gap-2 text-accent text-base font-semibold hover:underline decoration-2 underline-offset-4">
+                            View repository
+                            <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"></path>
+                            </svg>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -227,7 +328,7 @@
 
         <!-- Contact Section -->
         <section id="contact" class="max-w-4xl mx-auto mb-32 text-center scroll-mt-24 px-4">
-            <h2 class="text-6xl md:text-8xl font-bold tracking-tighter mb-10">Let's connect.</h2>
+            <h2 class="text-5xl sm:text-7xl md:text-8xl font-bold tracking-tighter mb-10 select-none">Let's connect.</h2>
 
             <div class="flex flex-wrap justify-center gap-4 mb-10">
                 <a href="https://linkedin.com/in/murtazakhanworld" target="_blank"
@@ -261,6 +362,53 @@
         <p>&copy; 2025 Murtaza Ali Khan. All rights reserved.</p>
     </footer>
 
+    <!-- Mobile Navigation Toggle Script -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        function toggleMenu() {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
+                // Open menu
+                mobileMenu.classList.remove('hidden');
+                // Trigger reflow for transition
+                mobileMenu.offsetHeight;
+                mobileMenu.classList.remove('opacity-0', '-translate-y-4');
+                mobileMenu.classList.add('opacity-100', 'translate-y-0');
+                // Change icon to close (X)
+                menuIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>`;
+            } else {
+                // Close menu
+                mobileMenu.classList.add('opacity-0', '-translate-y-4');
+                mobileMenu.classList.remove('opacity-100', 'translate-y-0');
+                // Change icon back to hamburger
+                menuIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>`;
+                
+                // Wait for transition to hide element
+                setTimeout(() => {
+                    if (mobileMenu.classList.contains('opacity-0')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }, 300);
+            }
+        }
+
+        if (menuBtn && mobileMenu && menuIcon) {
+            menuBtn.addEventListener('click', toggleMenu);
+            
+            // Auto-close menu when clicking a link
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        toggleMenu();
+                    }
+                });
+            });
+        }
+    </script>
 </body>
 
 </html>
