@@ -1,53 +1,159 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth bg-black text-white antialiased">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Murtaza Ali | Software Engineer</title>
 
-    <title>Murtaza Ali | GitHub Portfolio</title>
-    <meta name="description" content="Minimalist portfolio of Murtaza Ali, focused on GitHub activity and progress.">
+    <!-- Meta Data -->
+    <meta name="description"
+        content="Murtaza Ali - AI & Data Science Engineer and Full-Stack Developer based in Karachi.">
+    <meta property="og:title" content="Murtaza Ali | Engineer & Innovator">
+    <meta property="og:description" content="Building intelligent systems and premium web applications.">
+    <meta property="og:type" content="website">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="icon" href="images/profile.png" type="image/png">
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        black: '#000000',
+
+
+                        white: '#FFFFFF',
+                        muted: '#86868b',
+                        accent: '#2997ff',
+                        surface: '#1d1d1f'
+                    },
+                    fontFamily: {
+                        sans: ['-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+                    },
+                    letterSpacing: {
+                        tighter: '-.04em',
+                        tight: '-.02em',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        .glass-nav {
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+        }
+
+        .bento-card {
+            background-color: #1d1d1f;
+            border-radius: 22px;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .bento-card:hover {
+            transform: scale(1.02);
+        }
+    </style>
 </head>
 
-<body>
+<body class="selection:bg-accent selection:text-white flex flex-col min-h-screen">
 
-    <header>
-        <div class="container">
-            <nav>
-                <a href="#" class="logo">Murtaza Ali</a>
-                <ul class="nav-links">
-                    <li><a href="#streak">Activity</a></li>
-                    <li><a href="#education">Education</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-nav border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 h-12 flex items-center justify-between text-xs font-semibold tracking-wide">
+            <a href="#" class="text-white hover:text-white/80 transition-colors">Murtaza Ali Khan</a>
+            <div class="flex gap-6 sm:gap-8 overflow-x-auto whitespace-nowrap scrollbar-hide">
+                <a href="#work" class="text-white/80 hover:text-white transition-colors">Work</a>
+                <a href="#skills" class="text-white/80 hover:text-white transition-colors">Skills</a>
+                <a href="#activity" class="text-white/80 hover:text-white transition-colors">Activity</a>
+                <a href="#about" class="text-white/80 hover:text-white transition-colors">About</a>
+                <a href="#contact" class="text-white/80 hover:text-white transition-colors">Contact</a>
+            </div>
         </div>
-    </header>
+    </nav>
 
-    <main>
-        <!-- Hero Section -->
-        <section id="home" class="hero">
-            <div class="container hero-grid">
-                <div class="hero-content">
-                    <!-- <span class="label">GITHUB PROGRESS</span> -->
-                    <h1>Murtaza Ali</h1>
-                    <div class="role">AI and Data Science Engineer & Python Developer</div>
-                    <p class="tagline">Consistency in code. Excellence in execution.</p>
+    <!-- Hero Section -->
+    <main class="flex-grow pt-32 pb-24 px-6">
+        <section class="max-w-4xl mx-auto text-center mb-40 mt-12 md:mt-20">
+            <div class="mb-10 flex justify-center">
+                <img src="images/profile.png" alt="Murtaza Ali Khan"
+                    class="w-32 h-32 md:w-40 md:h-40 rounded-full border border-white/10 object-cover shadow-2xl shadow-white/5 bg-surface">
+            </div>
+            <h1 class="text-5xl md:text-7xl lg:text-[96px] font-bold tracking-tighter leading-[1.05] mb-6">
+                Engineer.<br>Problem Solver.<br>Innovator.
+            </h1>
+            <p class="text-xl md:text-3xl font-medium text-muted tracking-tight mb-10 max-w-2xl mx-auto">
+                Building intelligent, data-driven systems and scalable proptech solutions.
+            </p>
+            <div class="flex items-center justify-center gap-8 text-xl font-medium">
+                <a href="#work" class="text-accent hover:underline decoration-2 underline-offset-4">View projects
+                    &gt;</a>
+                <a href="#contact" class="text-accent hover:underline decoration-2 underline-offset-4">Get in touch
+                    &gt;</a>
+            </div>
+        </section>
 
-                    <div class="about-me-list">
-                        <div>🔭 <b>Currently working on</b>: Enhancing Machine Learning model deployments.</div>
-                        <div>🌱 <b>Currently learning</b>: Deep Learning and Advanced Statistical Analysis.</div>
-                        <div>💬 <b>Ask me about</b>: Python or my journey into Data Science.</div>
-                        <div>⚡ <b>Fun fact</b>: I prefer the efficiency of the Linux terminal over a GUI!</div>
+        <!-- Work Section -->
+        <section id="work" class="max-w-7xl mx-auto mb-40 scroll-mt-24">
+            <h2 class="text-4xl md:text-6xl font-bold tracking-tighter mb-12 text-center">Selected Work.</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- JS Properties -->
+                <div class="bento-card p-10 md:p-14 flex flex-col justify-between min-h-[350px]">
+                    <div>
+                        <h3 class="text-3xl font-bold tracking-tight mb-4">JS Property & Construction</h3>
+                        <p class="text-muted text-lg font-medium max-w-md">A high-end corporate website for a premier
+                            real estate and construction firm.</p>
                     </div>
+                    <div class="mt-12">
+                        <a href="https://murtazakhanpro.github.io/jsproperties/" target="_blank"
+                            class="text-accent text-lg font-medium hover:underline decoration-2 underline-offset-4">Visit
+                            live site ↗</a>
+                    </div>
+                </div>
+                <!-- Inam Enterprises -->
+                <div class="bento-card p-10 md:p-14 flex flex-col justify-between min-h-[350px]">
+                    <div>
+                        <h3 class="text-3xl font-bold tracking-tight mb-4">Inam Enterprises</h3>
+                        <p class="text-muted text-lg font-medium max-w-md">A professional, high-performance business
+                            website with seamless UX and responsive design.</p>
+                    </div>
+                    <div class="mt-12">
+                        <a href="https://www.inamenterprises.com" target="_blank"
+                            class="text-accent text-lg font-medium hover:underline decoration-2 underline-offset-4">Visit
+                            live site ↗</a>
+                    </div>
+                </div>
+                <!-- Lyntica Property Management -->
+                <div
+                    class="bento-card p-10 md:p-14 flex flex-col justify-between min-h-[350px] md:col-span-2 bg-gradient-to-br from-[#1d1d1f] to-[#121213]">
+                    <div class="md:max-w-2xl">
+                        <h3 class="text-3xl font-bold tracking-tight mb-4">Lyntica Property Management System</h3>
+                        <p class="text-muted text-lg font-medium">A robust property management solution engineered with
+                            advanced data handling and intelligent system architecture.</p>
+                    </div>
+                    <div class="mt-12">
+                        <a href="https://github.com/murtazakhanpro/lyntica_property_management_system" target="_blank"
+                            class="text-accent text-lg font-medium hover:underline decoration-2 underline-offset-4">View
+                            source code ↗</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                    <div class="tech-badges">
+        <!-- Skills Section -->
+        <section id="skills" class="max-w-7xl mx-auto mb-40 scroll-mt-24">
+            <h2 class="text-4xl md:text-6xl font-bold tracking-tighter mb-12 text-center">Core Competencies.</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Technologies -->
+                <div class="bento-card p-10 md:p-14 flex flex-col justify-center">
+                    <h3 class="text-2xl font-bold tracking-tight mb-8 text-white/90">Tech Stack</h3>
+                    <div class="flex flex-wrap gap-3">
                         <img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54"
                             alt="Python">
                         <img src="https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white"
@@ -63,150 +169,98 @@
                         <img src="https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white"
                             alt="Git">
                     </div>
-
-                    <div class="hero-btns">
-                        <a href="https://github.com/murtazakhanpro" target="_blank" class="btn-outline">GitHub <i
-                                class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/murtazakhanworld" target="_blank"
-                            class="btn-outline">LinkedIn <i class="fab fa-linkedin"></i></a>
-                        <a href="https://www.x.com/murtazakhanpro" target="_blank" class="btn-outline">X <i
-                                class="fab fa-x-twitter"></i></a>
-                    </div>
                 </div>
-                <div class="hero-image-wrapper">
-                    <img src="images/profile.png" alt="Murtaza Ali">
-                </div>
-            </div>
-        </section>
-
-        <!-- GitHub Activity Section -->
-        <section id="streak">
-            <div class="container activity-container">
-                <div class="card-wrapper">
-                    <span class="label">CONTRIBUTION GRAPH</span>
-                    <img src="https://ghchart.rshah.org/40c463/murtazakhanpro" alt="Murtaza's GitHub Chart"
-                        class="gh-chart">
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Tools & Environments Section -->
-        <section id="tools">
-            <div class="container">
-                <span class="label">TOOLS & ENVIRONMENTS</span>
-                <div class="tools-grid">
-                    <div class="tool-card">
-                        <div class="tool-icons">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg"
-                                alt="Linux">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/windows8/windows8-original.svg"
-                                alt="Windows">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg"
-                                alt="Mac">
-                        </div>
-                        <h3>OS</h3>
-                        <p>Ubuntu (Linux), Windows, MacOS</p>
-                    </div>
-                    <div class="tool-card">
-                        <div class="tool-icons">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
-                                alt="VS Code">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
-                                alt="Git">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
-                                alt="GitHub" class="dark-invert">
-                        </div>
-                        <h3>Development</h3>
-                        <p>VS Code, Git, GitHub</p>
-                    </div>
-                    <div class="tool-card">
-                        <div class="tool-icons">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg"
-                                alt="Jupyter">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/anaconda/anaconda-original.svg"
-                                alt="Anaconda">
-                        </div>
-                        <h3>Data Science</h3>
-                        <p>Jupyter, Anaconda</p>
-                    </div>
+                <!-- Environments -->
+                <div class="bento-card p-10 md:p-14">
+                    <h3 class="text-2xl font-bold tracking-tight mb-8 text-white/90">Tools & Environments</h3>
+                    <ul class="space-y-5 text-lg font-medium text-muted">
+                        <li class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3"><strong
+                                class="text-white/90 min-w-[150px]">Operating Systems:</strong> Linux (Ubuntu), Windows
+                        </li>
+                        <li class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3"><strong
+                                class="text-white/90 min-w-[150px]">Development Tools:</strong> VS Code, Git, GitHub
+                        </li>
+                        <li class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3"><strong
+                                class="text-white/90 min-w-[150px]">Data Science:</strong> Jupyter Notebook, Anaconda
+                        </li>
+                        <li class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3"><strong
+                                class="text-white/90 min-w-[150px]">Productivity:</strong> Microsoft Office</li>
+                    </ul>
                 </div>
             </div>
         </section>
 
-        <!-- Education Section -->
-        <section id="education">
-            <div class="container">
-                <span class="label">EDUCATION & CERTIFICATIONS</span>
-                <div class="education-list">
-                    <div class="edu-item">
-                        <div class="edu-main">
-                            <h3>AI & Data Science Certification</h3>
-                            <p>Saylani Mass IT Training (SMIT)</p>
-                        </div>
-                        <span class="edu-status">In Progress</span>
-                    </div>
-                    <div class="edu-item">
-                        <div class="edu-main">
-                            <h3>Bachelor of Science in Computer Science</h3>
-                            <p>University Student</p>
-                        </div>
-                        <span class="edu-date">2026 — 2030</span>
-                    </div>
-                    <div class="edu-item">
-                        <div class="edu-main">
-                            <h3>Intermediate</h3>
-                            <p>Board of Intermediate Education Karachi (BIEK)</p>
-                        </div>
-                        <span class="edu-date">Completed</span>
-                    </div>
+        <!-- Open Source Activity -->
+        <section id="activity" class="max-w-7xl mx-auto mb-40 scroll-mt-24">
+            <h2 class="text-4xl md:text-6xl font-bold tracking-tighter mb-12 text-center">Open Source Activity.</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Streak -->
+                <div class="bento-card p-8 flex items-center justify-center overflow-hidden">
+                    <img src="https://streak-stats.demolab.com/?user=murtazakhanpro&theme=dark&hide_border=false"
+                        alt="GitHub Streak" class="w-full max-w-[495px] object-contain drop-shadow-2xl">
+                </div>
+                <!-- Top Langs -->
+                <div class="bento-card p-8 flex items-center justify-center overflow-hidden">
+                    <img src="https://github-readme-stats.shion.dev/api/top-langs/?username=murtazakhanpro&theme=dark&hide_border=false&include_all_commits=false&count_private=false&layout=compact"
+                        alt="Top Languages" class="w-full max-w-[350px] object-contain drop-shadow-2xl">
+                </div>
+                <!-- Top Repo -->
+                <div class="bento-card p-8 lg:col-span-2 flex flex-col items-center justify-center overflow-hidden">
+                    <h3 class="text-2xl font-bold tracking-tight mb-8 text-white/90 w-full text-center">Top Contributed
+                        Repo</h3>
+                    <img src="https://github-contributor-stats.vercel.app/api?username=murtazakhanpro&limit=5&theme=default_repocard&combine_all_yearly_contributions=true"
+                        alt="Top Contributed Repo"
+                        class="w-full max-w-[800px] object-contain rounded-xl drop-shadow-2xl mix-blend-screen opacity-90">
                 </div>
             </div>
         </section>
 
-        <!-- Proof Strip -->
-        <div class="proof-strip">
-            <div class="container" style="display: flex; justify-content: center; gap: 24px;">
-                <span>Daily Committer</span>
-                <span>Python Specialist</span>
-                <span>Open Source Enthusiast</span>
-            </div>
-        </div>
+        <!-- About Section -->
+        <section id="about" class="max-w-4xl mx-auto mb-40 scroll-mt-24 text-center px-4">
+            <h2 class="text-4xl md:text-6xl font-bold tracking-tighter mb-8">About Me.</h2>
+            <p class="text-2xl md:text-3xl text-muted font-medium leading-relaxed tracking-tight">
+                I am an AI & Data Science Engineer with a passion for building seamless, high-performance web
+                applications. My focus is on writing clean, scalable code and delivering digital experiences that feel
+                effortlessly premium.
+            </p>
+        </section>
 
         <!-- Contact Section -->
-        <section id="contact">
-            <div class="container" style="text-align: center;">
-                <span class="label">CONNECT</span>
-                <h2>Let's build something.</h2>
-                <div class="contact-links centered">
-                    <a href="https://github.com/murtazakhanpro" target="_blank" class="contact-link"><i
-                            class="fab fa-github"></i> GitHub</a>
-                    <a href="https://www.linkedin.com/in/murtazakhanworld" target="_blank" class="contact-link"><i
-                            class="fab fa-linkedin"></i> LinkedIn</a>
-                    <a href="mailto:murtazakhan.mzk@gmail.com" class="contact-link"><i class="fas fa-envelope"></i>
-                        Email</a>
-                </div>
+        <section id="contact" class="max-w-4xl mx-auto mb-32 text-center scroll-mt-24 px-4">
+            <h2 class="text-6xl md:text-8xl font-bold tracking-tighter mb-10">Let's connect.</h2>
+
+            <div class="flex flex-wrap justify-center gap-4 mb-10">
+                <a href="https://linkedin.com/in/murtazakhanworld" target="_blank"
+                    class="hover:opacity-80 transition-opacity">
+                    <img src="https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white"
+                        alt="LinkedIn" class="h-8">
+                </a>
+                <a href="https://x.com/murtazakhanpro" target="_blank" class="hover:opacity-80 transition-opacity">
+                    <img src="https://img.shields.io/badge/X-black.svg?logo=X&logoColor=white" alt="X" class="h-8">
+                </a>
+                <a href="mailto:murtazakhan.mzk@gmail.com" class="hover:opacity-80 transition-opacity">
+                    <img src="https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white" alt="Email"
+                        class="h-8">
+                </a>
             </div>
+
+            <a href="https://www.github.com/murtazakhanpro" target="_blank"
+                class="text-2xl md:text-4xl font-bold text-white hover:text-accent transition-colors tracking-tight">
+                github.com/murtazakhanpro ↗
+            </a>
         </section>
     </main>
 
-    <footer>
-        <div class="container">
-            <div class="footer-inner">
-                <div class="copyright">&copy; 2025 Murtaza Ali — Karachi, Pakistan</div>
-                <div class="footer-links">
-                    <a href="https://github.com/murtazakhanpro" target="_blank" title="GitHub"><i
-                            class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/murtazakhanworld" target="_blank" title="LinkedIn"><i
-                            class="fab fa-linkedin"></i></a>
-                    <a href="https://www.x.com/murtazakhanpro" target="_blank" title="X (Twitter)"><i
-                            class="fab fa-x-twitter"></i></a>
-                </div>
-            </div>
-        </div>
+    <!-- Footer -->
+    <footer
+        class="border-t border-white/10 py-12 px-6 text-center text-sm text-muted font-medium flex flex-col items-center gap-6">
+        <a href="https://visitcount.itsvg.in" target="_blank" class="hover:opacity-80 transition-opacity">
+            <img src="https://komarev.com/ghpvc/?username=murtazakhanpro&icon=3&color=0" alt="Profile Views"
+                class="h-6">
+        </a>
+        <p>&copy; 2025 Murtaza Ali Khan. All rights reserved.</p>
     </footer>
 
-    <script src="script.js"></script>
 </body>
 
 </html>
